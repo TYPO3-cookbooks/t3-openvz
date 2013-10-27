@@ -16,6 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+include_recipe 'chef-sugar::default'
+
+# prerequisites for Debian Wheezy
+apt_repository "openvz" do
+  uri "http://download.openvz.org/debian"
+  key "http://ftp.openvz.org/debian/archive.key"
+  components ["main"]
+  distribution "#{node[:lsb][:codename]}-test"
+  only_if { debian_after_squeeze? }
+end
+
+
 packages = [
   'linux-image-openvz-amd64',
   'vzctl',
@@ -44,4 +57,4 @@ execute "sysctl -p /etc/sysctl.d/openvz.conf" do
   action :nothing
 end
 
-include_recipe "openvz::host-watchdog"
+include_recipe "openv z::host-watchdog"
