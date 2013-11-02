@@ -57,4 +57,4 @@ execute "sysctl -p /etc/sysctl.d/openvz.conf" do
   action :nothing
 end
 
-include_recipe "openv z::host-watchdog"
+include_recipe "openvz::host-watchdog"
