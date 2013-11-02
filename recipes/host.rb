@@ -40,7 +40,7 @@ case node[:platform]
 when "debian", "ubuntu"
   packages.each do |pkg|
     package pkg do
-      action :upgrade
+      action :install
   end
 end
 when "centos"
