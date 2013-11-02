@@ -5,5 +5,5 @@ description      "Installs/Configures openvz"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.4"
 
-supports         "debian", "~> 6.0"
+supports         "debian", ">= 6.0"
 depends          "chef-sugar"
