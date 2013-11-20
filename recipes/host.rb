@@ -2,7 +2,7 @@
 # Cookbook Name:: openvz
 # Recipe:: host
 #
-# Copyright 2012, TYPO3 Association
+# Copyright 2012-2013, TYPO3 Association
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

@@ -1,4 +1,4 @@
-Description
+Description (outdated)
 ===========
 This cookbook installs (currently only) the host machine with OpenVZ packages.
 
