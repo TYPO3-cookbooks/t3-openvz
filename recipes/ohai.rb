@@ -69,7 +69,7 @@ end
 if node.virtualization.role == "guest"
 
   ohai "reload openvz-hostdetection" do
-    plugin "openvz-hostdetection"
+    plugin "virtualization"
     action :nothing
   end
 
