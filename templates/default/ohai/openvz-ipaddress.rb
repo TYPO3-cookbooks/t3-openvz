@@ -5,7 +5,7 @@
 # Copyright Nathan Williams
 # https://tickets.opscode.com/browse/OHAI-237?focusedCommentId=48960&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-48960
 
-Ohai.plugin(:OpenVirtuozzo) do
+Ohai.plugin(:OpenvzIPaddress) do
   provides 'ipaddress'
 
   def is_openvz?
