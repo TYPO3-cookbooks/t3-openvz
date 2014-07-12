@@ -65,17 +65,19 @@ end
 
 
 
-# On guest servers, include ohai plugin
+# On guest servers, include ohai plugins
 if node.virtualization.role == "guest"
 
-  ohai "reload_openvz" do
-    plugin "openvz-hostdetection"
-    action :nothing
-  end
+  ['hostdetection', 'ipaddress'].each do |plugin|
+    ohai "reload openvz-#{plugin}" do
+      plugin "openvz-#{plugin}"
+      action :nothing
+    end
 
-  template "#{node[:ohai][:plugin_path]}/openvz-hostdetection.rb" do
-    source "ohai/openvz-hostdetection.rb"
-    notifies :reload, "ohai[reload_openvz]"
+    template "#{node[:ohai][:plugin_path]}/openvz-#{plugin}.rb" do
+      source "ohai/openvz-#{plugin}.rb"
+      notifies :reload, "ohai[reload openvz-#{plugin}]"
+    end
   end
 
   include_recipe "ohai::default"
