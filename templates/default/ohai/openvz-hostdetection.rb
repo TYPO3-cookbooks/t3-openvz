@@ -13,17 +13,22 @@
 # limitations under the License.
 #
 
-provides "virtualization/host"
+Ohai.plugin(:OpenvzHostdettection) do
+  provides "virtualization/host"
 
-Ohai::Log.debug "Ohai openvz-hostdetection"
+  Ohai::Log.debug "Ohai openvz-hostdetection"
 
-openvz_metadata_from_hints = hint?('openvz-host')
+  collect_data(:linux) do
+    openvz_metadata_from_hints = hint?('openvz-host')
 
-if openvz_metadata_from_hints
-  Ohai::Log.debug "Have openvz-host hint"
-  host Mash.new
-  virtualization[:host] = openvz_metadata_from_hints['host']
-  Ohai::Log.debug "Set virtualization[:host] to '#{openvz_metadata_from_hints['host']}'"
-else
-  Ohai::Log.debug "No openvz-host hint"
+    if openvz_metadata_from_hints
+      Ohai::Log.debug "Have openvz-host hint"
+      host Mash.new
+      virtualization[:host] = openvz_metadata_from_hints['host']
+      Ohai::Log.debug "Set virtualization[:host] to '#{openvz_metadata_from_hints['host']}'"
+    else
+      Ohai::Log.debug "No openvz-host hint"
+    end
+  end
+
 end
