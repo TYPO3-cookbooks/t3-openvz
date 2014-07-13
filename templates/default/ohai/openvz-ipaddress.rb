@@ -21,7 +21,8 @@ Ohai.plugin(:OpenvzIPaddress) do
       network['interfaces'].each do |nic, attrs|
         next unless nic =~ /(venet|veth)/
         attrs['addresses'].each do |addr, params|
-          ipaddress addr if (addr !~ /^127/ && params['family'] == 'inet')
+          # as we use some 192.168.0.0/24 addresses on some VEs, we must prevent that this is taken as the public ipaddress
+          ipaddress addr if (addr !~ /^127/ && addr !~ /^192\.168/ && params['family'] == 'inet')
         end
       end
     end
