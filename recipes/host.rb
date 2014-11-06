@@ -57,4 +57,9 @@ execute "sysctl -p /etc/sysctl.d/openvz.conf" do
   action :nothing
 end
 
+template "/etc/vz/vz.conf" do
+  source "host/vz.conf"
+  mode 0644
+end
+
 include_recipe "openvz::host-watchdog"
