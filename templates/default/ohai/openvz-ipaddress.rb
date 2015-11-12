@@ -7,6 +7,7 @@
 
 Ohai.plugin(:OpenvzIPaddress) do
   provides 'ipaddress'
+  provides 'ip6address'
 
   def is_openvz?
     ::File.directory?('/proc/vz')
@@ -23,6 +24,7 @@ Ohai.plugin(:OpenvzIPaddress) do
         attrs['addresses'].each do |addr, params|
           # as we use some 192.168.0.0/24 addresses on some VEs, we must prevent that this is taken as the public ipaddress
           ipaddress addr if (addr !~ /^127/ && addr !~ /^192\.168/ && params['family'] == 'inet')
+          ip6address addr if (params['scope'] == 'Global' && params['family'] == 'inet6')
         end
       end
     end
