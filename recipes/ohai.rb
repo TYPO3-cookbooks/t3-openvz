@@ -86,7 +86,7 @@ if node.virtualization.role == "guest"
     end
   end
 
-  # fix IPv6 for Debian Squeeze using an old version of linux/network.rb
+  # fix IPv6 for Debian Squeeze and Ubuntu Lucid using an old version of linux/network.rb
   ohai "reload openvz-network-squeeze" do
     plugin "network"
     action :nothing
@@ -94,7 +94,7 @@ if node.virtualization.role == "guest"
   template "#{node[:ohai][:plugin_path]}/openvz-network-squeeze.rb" do
     source "ohai/openvz-network-squeeze.rb"
     notifies :reload, "ohai[reload openvz-network-squeeze]"
-    only_if { node[:lsb][:codename] == "squeeze" }
+    only_if { node[:lsb][:codename] == "squeeze" || node[:lsb][:codename] == "lucid"}
   end
 
   include_recipe "ohai::default"
