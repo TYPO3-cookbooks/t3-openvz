@@ -1,4 +1,4 @@
-name             "openvz"
+name             "t3-openvz"
 maintainer       "TYPO3 Association"
 maintainer_email "steffen.gebert@typo3.org"
 license          "Apache 2.0"

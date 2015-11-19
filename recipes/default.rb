@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 Chef::Log.debug "Node acting as openvz #{node[:virtualization][:role]}"
-include_recipe "openvz::#{node[:virtualization][:role]}"
+include_recipe "t3-openvz::#{node[:virtualization][:role]}"
 
 # include ohai recipe, which adds information, on which host a VE is running
-include_recipe "openvz::ohai"
+include_recipe "t3-openvz::ohai"
