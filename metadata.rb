@@ -8,3 +8,4 @@ version          "1.1.0"
 
 depends          "chef-sugar"
 depends          "ohai"
+depends          "zabbix-custom-checks"
