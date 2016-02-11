@@ -62,6 +62,7 @@ template "/etc/vz/vz.conf" do
   mode 0644
 end
 
+include_recipe "t3-openvz::ohai"
 include_recipe "t3-openvz::host-watchdog"
 
 include_recipe "zabbix-custom-checks::openvz-host"
