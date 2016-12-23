@@ -7,5 +7,5 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "1.1.3"
 
 depends          "chef-sugar"
-depends          "ohai", "< 4.0.0"
+depends          "ohai"
 depends          "zabbix-custom-checks"
