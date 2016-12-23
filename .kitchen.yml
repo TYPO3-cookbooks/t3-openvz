@@ -1,0 +1,20 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: debian-7.10
+
+suites:
+  - name: guest
+    run_list:
+        - recipe[t3-openvz::default]
+    attributes:
+      virtualization:
+        role: guest
