@@ -87,7 +87,7 @@ if node.virtualization.role == "guest"
 
     ohai_plugin 'network-squeeze' do
       resource :template
-      source_file "ohai/openvz-ipaddress.rb"
+      source_file "ohai/openvz-network-squeeze.rb"
       only_if { node[:lsb][:codename] == "squeeze" || node[:lsb][:codename] == "lucid"}
     end
 
