@@ -91,6 +91,12 @@ if node.virtualization.role == "guest"
       only_if { node[:lsb][:codename] == "squeeze" || node[:lsb][:codename] == "lucid"}
     end
 
+    # clean up ohai cookbook < 4 plugin directory
+    directory "/etc/chef/ohai_plugins" do
+      action :delete
+      recursive true
+    end
+
   rescue
 
     Chef::Log.warn "Falling back to ohai < 4.0.0 code"
