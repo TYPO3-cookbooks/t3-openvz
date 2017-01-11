@@ -23,7 +23,7 @@ Ohai.plugin(:OpenvzIPaddress) do
         next unless nic =~ /(venet|veth)/
         attrs['addresses'].each do |addr, params|
           # as we use some 192.168.0.0/24 addresses on some VEs, we must prevent that this is taken as the public ipaddress
-          ipaddress addr if (addr !~ /^127/ && addr !~ /^192\.168/ && params['family'] == 'inet')
+          ipaddress addr if (addr !~ /^127/ && addr !~ /^192\.168/ && addr !~ /^10\.186/ && params['family'] == 'inet')
           ip6address addr if (params['scope'] == 'Global' && params['family'] == 'inet6')
         end
       end
