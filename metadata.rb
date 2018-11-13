@@ -9,3 +9,4 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 depends          "chef-sugar"
 depends          "ohai"
 depends          "zabbix-custom-checks"
+depends          "seven_zip",    "< 3.0.0"
